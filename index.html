@@ -677,7 +677,178 @@
     section { padding: 3.5rem 1.25rem; }
     .case-header { padding: 1rem; }
   }
+
+  /* ── CONTACT FORM ── */
+  .form-wrap {
+    max-width: 640px;
+    margin: 3rem auto 0;
+  }
+  .form-inner {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(245,241,235,0.15);
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+  .form-intro {
+    font-size: .92rem;
+    color: rgba(245,241,235,.6);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 300;
+  }
+  .field-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .field-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(245,241,235,.6);
+    margin-bottom: .5rem;
+  }
+  .req { color: var(--accent); }
+  .field-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(245,241,235,0.2);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: .95rem;
+    padding: .85rem 1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color .2s, background .2s;
+    -webkit-appearance: none;
+  }
+  .field-input::placeholder { color: rgba(245,241,235,0.25); }
+  .field-input:focus {
+    border-color: rgba(245,241,235,0.6);
+    background: rgba(255,255,255,0.08);
+  }
+  .field-input.valid { border-color: #5daa72; }
+  .field-input.invalid { border-color: #e0604a; }
+  .field-textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+  .field-hint {
+    display: block;
+    font-size: .75rem;
+    margin-top: .35rem;
+    min-height: 1.1em;
+    font-family: var(--font-mono);
+    letter-spacing: .03em;
+  }
+  .field-hint.ok { color: #5daa72; }
+  .field-hint.err { color: #e0604a; }
+  .char-count {
+    display: block;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    color: rgba(245,241,235,0.3);
+    margin-top: .25rem;
+    letter-spacing: .04em;
+  }
+  .captcha-wrap {
+    margin: 1.75rem 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .6rem;
+  }
+  .captcha-note {
+    font-size: .72rem;
+    color: rgba(245,241,235,0.35);
+    font-family: var(--font-mono);
+    letter-spacing: .04em;
+  }
+  .btn-submit {
+    width: 100%;
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background .2s, transform .15s, opacity .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    position: relative;
+  }
+  .btn-submit:disabled {
+    background: rgba(200,75,47,0.3);
+    color: rgba(245,241,235,0.35);
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-submit:not(:disabled):hover {
+    background: #a83a20;
+    transform: translateY(-1px);
+  }
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .form-privacy {
+    text-align: center;
+    font-size: .72rem;
+    color: rgba(245,241,235,0.3);
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    letter-spacing: .03em;
+  }
+  .form-success {
+    background: rgba(93,170,114,0.15);
+    border: 1px solid rgba(93,170,114,0.4);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .success-icon {
+    font-size: 1.3rem;
+    color: #5daa72;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+  .form-success strong { display: block; color: #5daa72; margin-bottom: .25rem; font-size: .95rem; }
+  .form-success p { font-size: .85rem; color: rgba(245,241,235,0.6); margin: 0; }
+  .form-error {
+    background: rgba(224,96,74,0.12);
+    border: 1px solid rgba(224,96,74,0.35);
+    border-radius: 2px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+    font-size: .85rem;
+    color: #e0604a;
+  }
+  @media (max-width: 768px) {
+    .form-inner { padding: 1.75rem 1.25rem; }
+    .captcha-wrap { align-items: center; }
+    .h-captcha { transform: scale(0.9); transform-origin: left center; }
+  }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
 
@@ -1261,6 +1432,45 @@
     <a href="https://in.linkedin.com/in/tarannum-f-07731b180" target="_blank" class="contact-link">LinkedIn</a>
     <a href="tel:+917258050776" class="contact-link">📞 Call</a>
   </div>
+  <div class="form-wrap fade-in">
+    <div class="form-inner">
+      <p class="form-intro">Or drop me a message directly — I usually reply within 24 hours.</p>
+      <div id="formSuccess" class="form-success" style="display:none">
+        <span class="success-icon">✓</span>
+        <div><strong>Message sent!</strong><p>Thanks for reaching out. I'll get back to you within 24 hours.</p></div>
+      </div>
+      <div id="formError" class="form-error" style="display:none">
+        <span>⚠</span><p id="formErrorMsg">Something went wrong. Please try again or email me directly.</p>
+      </div>
+      <div id="theForm">
+        <div class="field-group">
+          <label class="field-label" for="cf-name">Full Name <span class="req">*</span></label>
+          <input type="text" id="cf-name" class="field-input" placeholder="Your full name" autocomplete="name" maxlength="100" />
+          <span class="field-hint" id="hint-name"></span>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="cf-email">Email Address <span class="req">*</span></label>
+          <input type="email" id="cf-email" class="field-input" placeholder="you@example.com" autocomplete="email" maxlength="200" />
+          <span class="field-hint" id="hint-email"></span>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="cf-message">Message <span class="req">*</span></label>
+          <textarea id="cf-message" class="field-input field-textarea" placeholder="Tell me about your project, role, or what you're looking for…" maxlength="2000" rows="5"></textarea>
+          <span class="field-hint" id="hint-message"></span>
+          <span class="char-count" id="charCount">0 / 2000</span>
+        </div>
+        <div class="captcha-wrap">
+          <div class="h-captcha" id="hcaptchaBox" data-sitekey="10000000-ffff-ffff-ffff-000000000001" data-theme="dark" data-callback="onCaptchaSuccess" data-expired-callback="onCaptchaExpire"></div>
+          <p class="captcha-note">Security check — proves you're human, stops spam.</p>
+        </div>
+        <button class="btn-submit" id="submitBtn" disabled>
+          <span id="btnText">Send Message</span>
+          <span id="btnSpinner" style="display:none" class="spinner"></span>
+        </button>
+        <p class="form-privacy">🔒 Your details are only used to reply to your message. Never shared.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -1269,14 +1479,34 @@
 </footer>
 
 <script>
-  // Case study toggle
+  // ── EMAILJS INIT ──────────────────────────────────────────────────────────
+  // SETUP INSTRUCTIONS (takes 5 mins, free):
+  // 1. Go to https://emailjs.com and create a free account
+  // 2. Add an Email Service (Gmail recommended) -> copy the Service ID below
+  // 3. Create an Email Template with variables: {{from_name}}, {{from_email}}, {{message}}
+  //    Copy the Template ID below
+  // 4. Go to Account -> Public Key and copy it below
+  // 5. Replace the 3 placeholder values and you're live!
+  // ─────────────────────────────────────────────────────────────────────────
+  const EMAILJS_PUBLIC_KEY  = 'ePg4Dfb3EXUxXrSDp';   // e.g. "user_xxxxxxxxxxxx"
+  const EMAILJS_SERVICE_ID  = 'service_heqixdo';   // e.g. "service_xxxxxxx"
+  const EMAILJS_TEMPLATE_ID = 'template_joz9fsf';  // e.g. "template_xxxxxxx"
+  // ─────────────────────────────────────────────────────────────────────────
+
+  (function() {
+    if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+  })();
+
+  // ── CASE STUDY TOGGLE ────────────────────────────────────────────────────
   function toggleCase(card) {
     const isOpen = card.classList.contains('open');
     document.querySelectorAll('.case-card.open').forEach(c => c.classList.remove('open'));
     if (!isOpen) card.classList.add('open');
   }
 
-  // Hamburger menu
+  // ── HAMBURGER MENU ───────────────────────────────────────────────────────
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
@@ -1292,7 +1522,7 @@
     });
   });
 
-  // Fade-in on scroll
+  // ── FADE-IN ON SCROLL ────────────────────────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -1300,8 +1530,216 @@
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── CONTACT FORM ─────────────────────────────────────────────────────────
+  const nameEl    = document.getElementById('cf-name');
+  const emailEl   = document.getElementById('cf-email');
+  const msgEl     = document.getElementById('cf-message');
+  const submitBtn = document.getElementById('submitBtn');
+  const charCount = document.getElementById('charCount');
+
+  // State
+  const state = { name: false, email: false, message: false, captcha: false };
+  let captchaToken = null;
+
+  // Rate limiting — max 3 submissions per 10 minutes (client-side)
+  const RATE_KEY = 'cf_submissions';
+  const RATE_WINDOW = 10 * 60 * 1000; // 10 mins
+  const RATE_LIMIT = 3;
+
+  function getRateData() {
+    try { return JSON.parse(localStorage.getItem(RATE_KEY)) || { count: 0, windowStart: Date.now() }; }
+    catch(e) { return { count: 0, windowStart: Date.now() }; }
+  }
+  function isRateLimited() {
+    const d = getRateData();
+    if (Date.now() - d.windowStart > RATE_WINDOW) return false;
+    return d.count >= RATE_LIMIT;
+  }
+  function incrementRate() {
+    const d = getRateData();
+    if (Date.now() - d.windowStart > RATE_WINDOW) {
+      localStorage.setItem(RATE_KEY, JSON.stringify({ count: 1, windowStart: Date.now() }));
+    } else {
+      localStorage.setItem(RATE_KEY, JSON.stringify({ count: d.count + 1, windowStart: d.windowStart }));
+    }
+  }
+
+  // Honeypot (hidden field added dynamically — bots fill it, humans don't)
+  const honeypot = document.createElement('input');
+  honeypot.type = 'text';
+  honeypot.name = 'website';
+  honeypot.autocomplete = 'off';
+  honeypot.tabIndex = -1;
+  honeypot.style.cssText = 'position:absolute;left:-9999px;opacity:0;height:0;';
+  document.getElementById('theForm').appendChild(honeypot);
+
+  // Validation helpers
+  function validateName(v) {
+    v = v.trim();
+    if (!v) return { ok: false, msg: 'Name is required' };
+    if (v.length < 2) return { ok: false, msg: 'Name must be at least 2 characters' };
+    if (v.length > 100) return { ok: false, msg: 'Name is too long' };
+    if (/[<>{}|\\]/.test(v)) return { ok: false, msg: 'Name contains invalid characters' };
+    return { ok: true, msg: '✓ Looks good' };
+  }
+  function validateEmail(v) {
+    v = v.trim();
+    if (!v) return { ok: false, msg: 'Email address is required' };
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!re.test(v)) return { ok: false, msg: 'Please enter a valid email address' };
+    // Block disposable email domains
+    const blocked = ['mailinator','guerrillamail','tempmail','throwam','yopmail','sharklasers','fakeinbox'];
+    const domain = v.split('@')[1].toLowerCase();
+    if (blocked.some(b => domain.includes(b))) return { ok: false, msg: 'Please use a real email address' };
+    return { ok: true, msg: '✓ Valid email' };
+  }
+  function validateMessage(v) {
+    v = v.trim();
+    if (!v) return { ok: false, msg: 'Message is required' };
+    if (v.length < 20) return { ok: false, msg: `Too short — please write at least 20 characters (${v.length}/20)` };
+    if (v.length > 2000) return { ok: false, msg: 'Message is too long (max 2000 characters)' };
+    // Spam signal: too many URLs
+    const urlCount = (v.match(/https?:\/\//gi) || []).length;
+    if (urlCount > 3) return { ok: false, msg: 'Message contains too many links' };
+    return { ok: true, msg: '✓ Message looks good' };
+  }
+
+  function setFieldState(inputEl, hintEl, result) {
+    hintEl.textContent = result.msg;
+    hintEl.className = 'field-hint ' + (result.ok ? 'ok' : 'err');
+    inputEl.className = 'field-input' + (inputEl.tagName === 'TEXTAREA' ? ' field-textarea' : '') + ' ' + (result.ok ? 'valid' : 'invalid');
+  }
+
+  function checkSubmitEnabled() {
+    const allValid = state.name && state.email && state.message && state.captcha;
+    submitBtn.disabled = !allValid;
+  }
+
+  // Live validation — validate on blur, update on input after first blur
+  let touched = { name: false, email: false, message: false };
+
+  nameEl.addEventListener('blur', () => {
+    touched.name = true;
+    const r = validateName(nameEl.value);
+    state.name = r.ok;
+    setFieldState(nameEl, document.getElementById('hint-name'), r);
+    checkSubmitEnabled();
+  });
+  nameEl.addEventListener('input', () => {
+    if (!touched.name) return;
+    const r = validateName(nameEl.value);
+    state.name = r.ok;
+    setFieldState(nameEl, document.getElementById('hint-name'), r);
+    checkSubmitEnabled();
+  });
+
+  emailEl.addEventListener('blur', () => {
+    touched.email = true;
+    const r = validateEmail(emailEl.value);
+    state.email = r.ok;
+    setFieldState(emailEl, document.getElementById('hint-email'), r);
+    checkSubmitEnabled();
+  });
+  emailEl.addEventListener('input', () => {
+    if (!touched.email) return;
+    const r = validateEmail(emailEl.value);
+    state.email = r.ok;
+    setFieldState(emailEl, document.getElementById('hint-email'), r);
+    checkSubmitEnabled();
+  });
+
+  msgEl.addEventListener('blur', () => {
+    touched.message = true;
+    const r = validateMessage(msgEl.value);
+    state.message = r.ok;
+    setFieldState(msgEl, document.getElementById('hint-message'), r);
+    checkSubmitEnabled();
+  });
+  msgEl.addEventListener('input', () => {
+    charCount.textContent = msgEl.value.length + ' / 2000';
+    if (!touched.message) return;
+    const r = validateMessage(msgEl.value);
+    state.message = r.ok;
+    setFieldState(msgEl, document.getElementById('hint-message'), r);
+    checkSubmitEnabled();
+  });
+
+  // hCaptcha callbacks (called by hCaptcha widget)
+  window.onCaptchaSuccess = function(token) {
+    captchaToken = token;
+    state.captcha = true;
+    checkSubmitEnabled();
+  };
+  window.onCaptchaExpire = function() {
+    captchaToken = null;
+    state.captcha = false;
+    checkSubmitEnabled();
+  };
+
+  // Submit
+  submitBtn.addEventListener('click', async () => {
+    // Re-validate everything
+    const rName  = validateName(nameEl.value);
+    const rEmail = validateEmail(emailEl.value);
+    const rMsg   = validateMessage(msgEl.value);
+    [touched.name, touched.email, touched.message] = [true, true, true];
+    setFieldState(nameEl, document.getElementById('hint-name'), rName);
+    setFieldState(emailEl, document.getElementById('hint-email'), rEmail);
+    setFieldState(msgEl, document.getElementById('hint-message'), rMsg);
+    if (!rName.ok || !rEmail.ok || !rMsg.ok || !state.captcha) return;
+
+    // Honeypot check
+    if (honeypot.value) return;
+
+    // Rate limit check
+    if (isRateLimited()) {
+      showError('Too many messages sent. Please wait 10 minutes before trying again.');
+      return;
+    }
+
+    // Show spinner
+    document.getElementById('btnText').style.display = 'none';
+    document.getElementById('btnSpinner').style.display = 'inline-block';
+    submitBtn.disabled = true;
+
+    try {
+      if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+        // Demo mode — simulate success for testing before EmailJS is set up
+        await new Promise(r => setTimeout(r, 1200));
+        showSuccess();
+        return;
+      }
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name:  nameEl.value.trim(),
+        from_email: emailEl.value.trim(),
+        message:    msgEl.value.trim(),
+        reply_to:   emailEl.value.trim(),
+      });
+      incrementRate();
+      showSuccess();
+    } catch(err) {
+      console.error('EmailJS error:', err);
+      showError('Failed to send. Please email me directly at tarannumfatma2027@gmail.com');
+      document.getElementById('btnText').style.display = 'inline';
+      document.getElementById('btnSpinner').style.display = 'none';
+      submitBtn.disabled = false;
+    }
+  });
+
+  function showSuccess() {
+    document.getElementById('theForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'flex';
+    document.getElementById('formError').style.display = 'none';
+  }
+  function showError(msg) {
+    document.getElementById('formErrorMsg').textContent = msg;
+    document.getElementById('formError').style.display = 'flex';
+    document.getElementById('btnText').style.display = 'inline';
+    document.getElementById('btnSpinner').style.display = 'none';
+    submitBtn.disabled = false;
+  }
 </script>
 </body>
 </html>
