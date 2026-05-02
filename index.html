@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarannum Fatma — SEO & Growth Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f1eb;
+    --cream: #ede8df;
+    --accent: #c84b2f;
+    --accent2: #1a4a3a;
+    --gold: #b8860b;
+    --muted: #6b6560;
+    --border: #d4cfc6;
+    --white: #fdfcfa;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(245,241,235,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+  .hero-left {
+    padding: 8rem 4rem 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-tagline {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 420px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    padding: .75rem 2rem;
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all .2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #a83a20; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    padding: .75rem 2rem;
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all .2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--ink); }
+
+  .hero-right {
+    padding: 8rem 4rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--cream);
+  }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 3rem; }
+  .stat-box {
+    background: var(--white);
+    padding: 1.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-box::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s;
+  }
+  .stat-box:hover::after { transform: scaleX(1); }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: .4rem;
+  }
+  .stat-label {
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero-skills { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .skill-pill {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    padding: .35rem .85rem;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 7rem 5rem; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    color: var(--accent);
+    letter-spacing: .1em;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: 1rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 6rem; align-items: start; }
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+  .about-sidebar {}
+  .sidebar-block {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .sidebar-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+  }
+  .sidebar-label {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .5rem;
+  }
+  .sidebar-value {
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* ── CASE STUDIES ── */
+  #work { background: var(--paper); }
+  .cases-list { display: flex; flex-direction: column; gap: 3px; }
+  .case-card {
+    background: var(--white);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .2s;
+    border: 1px solid transparent;
+  }
+  .case-card:hover { border-color: var(--accent); }
+  .case-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 2.5rem;
+    gap: 2rem;
+  }
+  .case-meta { display: flex; align-items: center; gap: 2rem; flex: 1; }
+  .case-index {
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    color: var(--accent);
+    min-width: 2rem;
+    letter-spacing: .05em;
+  }
+  .case-title-area {}
+  .case-client {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .2rem;
+  }
+  .case-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+  .case-tags { display: flex; gap: .5rem; margin-left: auto; }
+  .case-tag {
+    font-family: var(--font-mono);
+    font-size: .65rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .3rem .7rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .case-arrow {
+    font-size: 1.2rem;
+    color: var(--muted);
+    transition: transform .3s;
+  }
+  .case-card.open .case-arrow { transform: rotate(90deg); color: var(--accent); }
+
+  .case-body {
+    display: none;
+    padding: 0 2.5rem 2.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0;
+  }
+  .case-card.open .case-body { display: block; }
+  .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-top: 2rem; }
+  .case-section-label {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .75rem;
+  }
+  .case-text {
+    font-size: .92rem;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+  .results-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2px;
+    margin-top: 1.5rem;
+  }
+  .result-box {
+    background: var(--cream);
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+  .result-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+    margin-bottom: .3rem;
+  }
+  .result-desc {
+    font-family: var(--font-mono);
+    font-size: .65rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .strategy-list { list-style: none; }
+  .strategy-list li {
+    font-size: .9rem;
+    color: var(--muted);
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: .75rem;
+    align-items: flex-start;
+    font-weight: 300;
+  }
+  .strategy-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: .85rem;
+    margin-top: .05rem;
+    flex-shrink: 0;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--accent2); color: var(--paper); }
+  #skills .section-title { color: var(--paper); }
+  #skills .section-title em { color: #7ecbac; }
+  #skills .section-num { color: #7ecbac; }
+  #skills .section-line { background: rgba(245,241,235,.2); }
+  .skills-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+  .skill-group {
+    background: rgba(255,255,255,.05);
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,.08);
+    transition: background .2s;
+  }
+  .skill-group:hover { background: rgba(255,255,255,.09); }
+  .skill-group-name {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #7ecbac;
+    margin-bottom: 1.25rem;
+  }
+  .skill-item {
+    font-size: .88rem;
+    color: rgba(245,241,235,.8);
+    padding: .3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-weight: 300;
+  }
+
+  /* ── TOOLS ── */
+  #tools { background: var(--cream); }
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .tool-pill {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: .6rem 1.25rem;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--ink);
+    transition: all .2s;
+    cursor: default;
+  }
+  .tool-pill:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+  /* ── TIMELINE ── */
+  #experience { background: var(--white); }
+  .timeline { position: relative; padding-left: 3rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 3.5rem; }
+  .timeline-dot {
+    position: absolute;
+    left: -3rem;
+    top: .4rem;
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--accent);
+    z-index: 1;
+  }
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .08em;
+    color: var(--accent);
+    margin-bottom: .4rem;
+  }
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: .2rem;
+  }
+  .timeline-company {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-bottom: .75rem;
+    font-weight: 300;
+  }
+  .timeline-highlights { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tl-highlight {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    padding: .25rem .65rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: .04em;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 7rem 5rem;
+    text-align: center;
+  }
+  #contact .section-title { color: var(--paper); }
+  #contact .section-title em { color: var(--accent); }
+  .contact-sub {
+    font-size: 1.05rem;
+    color: rgba(245,241,235,.6);
+    max-width: 460px;
+    margin: 1.5rem auto 3rem;
+    font-weight: 300;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-link {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    text-decoration: none;
+    padding: .75rem 1.75rem;
+    border: 1px solid rgba(245,241,235,.2);
+    transition: all .2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding: 1.5rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(245,241,235,.35);
+    font-size: .75rem;
+    font-family: var(--font-mono);
+    letter-spacing: .05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 2rem 3rem; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-right { padding: 3rem 2rem; }
+    section { padding: 4rem 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .case-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-cols { grid-template-columns: 1fr 1fr; }
+    #contact { padding: 4rem 2rem; }
+    footer { padding: 1.5rem 2rem; flex-direction: column; gap: .5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">TF<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Case Studies</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left fade-in">
+    <p class="hero-eyebrow">SEO & Digital Growth Strategist</p>
+    <h1 class="hero-name">Tarannum<br><em>Fatma</em></h1>
+    <p class="hero-tagline">I turn search data into business growth — driving 100%+ traffic increases, leading multi-website campaigns, and building organic authority that lasts.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn-primary">View Case Studies</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in" style="transition-delay:.15s">
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-num">4.5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">25+</div>
+        <div class="stat-label">Websites Managed</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">137%</div>
+        <div class="stat-label">Best Organic Growth</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">76.7%</div>
+        <div class="stat-label">Best Call Boost</div>
+      </div>
+    </div>
+    <div class="hero-skills">
+      <span class="skill-pill">Technical SEO</span>
+      <span class="skill-pill">AEO / GEO</span>
+      <span class="skill-pill">Content Strategy</span>
+      <span class="skill-pill">Google Ads</span>
+      <span class="skill-pill">Team Leadership</span>
+      <span class="skill-pill">AI Optimization</span>
+      <span class="skill-pill">Digital PR</span>
+      <span class="skill-pill">CRO</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Who I <em>Am</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>I'm a <strong>SEO Team Lead and Digital Marketing Strategist</strong> with over 4.5 years of experience helping businesses grow their organic presence, generate qualified leads, and build lasting digital authority.</p>
+      <p>My work spans healthcare marketing, educational branding, and US-based service businesses — from launching 25+ websites end-to-end to running outreach campaigns that landed placements in Forbes, Featured.com, and Connectively.</p>
+      <p>What sets me apart is my specialization in <strong>AI Search Optimization (AEO/GEO)</strong> — optimizing for ChatGPT, Gemini, and Google AI Overviews — at a time when most marketers are still catching up. I also lead teams, mentor junior talent, and automate reporting so insights drive decisions, not spreadsheet hours.</p>
+      <p>Based in <strong>Bengaluru, India</strong>. Open to senior SEO, growth marketing, and digital strategy roles at MNCs and high-growth tech companies.</p>
+    </div>
+    <div class="about-sidebar fade-in" style="transition-delay:.1s">
+      <div class="sidebar-block">
+        <div class="sidebar-label">Location</div>
+        <div class="sidebar-value">Bengaluru, Karnataka, India</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Specialization</div>
+        <div class="sidebar-value">Technical SEO · AI Search · Growth Marketing</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Industry Depth</div>
+        <div class="sidebar-value">Healthcare · Education · Finance · Home Services</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Education</div>
+        <div class="sidebar-value">BMS — Finance, Lords Universal College, Mumbai<br><span style="color:var(--muted);font-size:.85em">GPA: 9.45 / 10</span></div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Contact</div>
+        <div class="sidebar-value">tarannumfatma2027@gmail.com<br>+91 7258050776</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Case <em>Studies</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="fade-in" style="color:var(--muted);margin-bottom:2.5rem;font-weight:300">Click any project to expand the full case study.</p>
+
+  <div class="cases-list">
+
+    <!-- CASE 1: Metro Urgent Care -->
+    <div class="case-card fade-in" onclick="toggleCase(this)">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-index">01</span>
+          <div class="case-title-area">
+            <div class="case-client">Healthcare · Multi-Location</div>
+            <div class="case-title">Metro Urgent Care — Lead Generation Turnaround</div>
+          </div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">SEO</span>
+          <span class="case-tag">Local SEO</span>
+          <span class="case-tag">CRO</span>
+        </div>
+        <span class="case-arrow">›</span>
+      </div>
+      <div class="case-body">
+        <div class="case-grid">
+          <div>
+            <div class="case-section-label">Challenge</div>
+            <p class="case-text">Metro Urgent Care was struggling with low organic visibility and poor conversion rates across their locations. The website wasn't optimized for local search, the Google Business Profile was underperforming, and appointment form submissions were minimal despite existing website traffic. The business needed more calls and more booked appointments — fast.</p>
+            <div class="case-section-label" style="margin-top:1.5rem">Strategy</div>
+            <ul class="strategy-list">
+              <li>Comprehensive technical SEO audit and on-page optimization for all location pages</li>
+              <li>Google Business Profile optimization with keyword-rich descriptions, updated categories, and post strategy</li>
+              <li>Conversion rate optimization: redesigned appointment forms, added click-to-call CTAs, reduced friction</li>
+              <li>Local schema markup implementation for each location</li>
+              <li>Content strategy targeting urgent care intent queries (symptoms, walk-in availability, hours)</li>
+              <li>Coordinated with dev team to improve Core Web Vitals and mobile UX</li>
+            </ul>
+          </div>
+          <div>
+            <div class="case-section-label">Results</div>
+            <div class="results-row">
+              <div class="result-box">
+                <span class="result-num">76.7%</span>
+                <span class="result-desc">Increase in Inbound Calls</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">42.8%</span>
+                <span class="result-desc">More Appointment Form Fills</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">31%</span>
+                <span class="result-desc">Google Business Profile Call Boost</span>
+              </div>
+            </div>
+            <div class="case-section-label" style="margin-top:1.5rem">Scope</div>
+            <p class="case-text">Full SEO & CRO ownership. Single-handedly managed strategy, execution, and reporting. Part of a broader 12-website healthcare portfolio managed simultaneously.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2: Stratosphere -->
+    <div class="case-card fade-in" onclick="toggleCase(this)">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-index">02</span>
+          <div class="case-title-area">
+            <div class="case-client">B2B Services · Growth Marketing</div>
+            <div class="case-title">Stratosphere — 137% Organic Growth & 46% More Leads</div>
+          </div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">SEO</span>
+          <span class="case-tag">Content</span>
+          <span class="case-tag">Lead Gen</span>
+        </div>
+        <span class="case-arrow">›</span>
+      </div>
+      <div class="case-body">
+        <div class="case-grid">
+          <div>
+            <div class="case-section-label">Challenge</div>
+            <p class="case-text">Stratosphere needed to scale organic traffic and lead generation year-over-year in a competitive B2B market. The website had limited authority, thin content, and no structured lead generation funnel. The goal was significant YoY growth in both sessions and qualified leads.</p>
+            <div class="case-section-label" style="margin-top:1.5rem">Strategy</div>
+            <ul class="strategy-list">
+              <li>Full SEO audit identifying technical gaps, keyword opportunities, and content gaps</li>
+              <li>Built a topical authority content cluster strategy targeting high-intent B2B keywords</li>
+              <li>Digital PR and link acquisition via HARO and outreach campaigns to build domain authority</li>
+              <li>Landing page optimization with conversion-focused copy and lead magnet integration</li>
+              <li>Looker Studio reporting dashboard for weekly performance visibility and pivot decisions</li>
+              <li>Email marketing integration to nurture leads captured via organic traffic</li>
+            </ul>
+          </div>
+          <div>
+            <div class="case-section-label">Results</div>
+            <div class="results-row">
+              <div class="result-box">
+                <span class="result-num">137%</span>
+                <span class="result-desc">Organic Session Growth</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">46%</span>
+                <span class="result-desc">YoY Lead Increase</span>
+              </div>
+            </div>
+            <div class="case-section-label" style="margin-top:1.5rem">Impact</div>
+            <p class="case-text">The campaign established Stratosphere as a topically authoritative site in its niche. The 46% YoY lead increase directly supported sales pipeline growth. The reporting framework I built continued to be used by the team post-engagement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 3: Haven Medspa -->
+    <div class="case-card fade-in" onclick="toggleCase(this)">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-index">03</span>
+          <div class="case-title-area">
+            <div class="case-client">Medical Spa · Consumer Health</div>
+            <div class="case-title">Haven Medspa — 145% Traffic Growth Post-Pandemic</div>
+          </div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">SEO</span>
+          <span class="case-tag">Mobile</span>
+          <span class="case-tag">Recovery</span>
+        </div>
+        <span class="case-arrow">›</span>
+      </div>
+      <div class="case-body">
+        <div class="case-grid">
+          <div>
+            <div class="case-section-label">Challenge</div>
+            <p class="case-text">Haven Medspa needed to rebuild their digital presence after significant traffic losses during the pandemic. The focus was on recovering organic traffic, with a specific emphasis on mobile users — the primary traffic source for medspa searches — while simultaneously driving a measurable uplift in qualified leads.</p>
+            <div class="case-section-label" style="margin-top:1.5rem">Strategy</div>
+            <ul class="strategy-list">
+              <li>Post-pandemic recovery audit: identified ranking losses, lost backlinks, and content decay</li>
+              <li>Mobile-first optimization: improved page speed, touch UX, and mobile SERP appearance</li>
+              <li>Service page redesign with stronger SEO foundations and conversion-focused layout</li>
+              <li>Local SEO and Google Business Profile optimization for medspa-specific queries</li>
+              <li>Content refreshes targeting seasonal beauty and wellness search intent spikes</li>
+              <li>Growth plan benchmarked to pre-pandemic performance as baseline</li>
+            </ul>
+          </div>
+          <div>
+            <div class="case-section-label">Results</div>
+            <div class="results-row">
+              <div class="result-box">
+                <span class="result-num">145.6%</span>
+                <span class="result-desc">Organic Traffic Growth</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">130.9%</span>
+                <span class="result-desc">Mobile Traffic Growth</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">49%</span>
+                <span class="result-desc">Increase in Leads</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">30%</span>
+                <span class="result-desc">Above Pre-Pandemic Lead Volume</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 4: Digital PR & Outreach -->
+    <div class="case-card fade-in" onclick="toggleCase(this)">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-index">04</span>
+          <div class="case-title-area">
+            <div class="case-client">Digital PR · Multi-Brand</div>
+            <div class="case-title">Featured.com Outreach — 49.1% Backlink Placement Rate</div>
+          </div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">Digital PR</span>
+          <span class="case-tag">Link Building</span>
+          <span class="case-tag">Ghostwriting</span>
+        </div>
+        <span class="case-arrow">›</span>
+      </div>
+      <div class="case-body">
+        <div class="case-grid">
+          <div>
+            <div class="case-section-label">Overview</div>
+            <p class="case-text">Ran a systematic digital PR outreach programme across multiple client brands using Featured.com, Connectively, HARO, and Forbes Agency Council. The goal was to build high-authority backlinks and establish client executives as thought leaders, supporting both domain authority and brand credibility in competitive verticals.</p>
+            <div class="case-section-label" style="margin-top:1.5rem">Approach</div>
+            <ul class="strategy-list">
+              <li>Monitored daily queries across HARO, Featured.com, and Connectively for placement opportunities</li>
+              <li>Ghostwrote expert responses and thought leadership content on behalf of client executives</li>
+              <li>Pitched and secured placements in Forbes Agency Council and other high-DA publications</li>
+              <li>Built a response template library to scale outreach volume without sacrificing quality</li>
+              <li>Tracked DA impact of each placement and reported on domain authority growth monthly</li>
+            </ul>
+          </div>
+          <div>
+            <div class="case-section-label">Results</div>
+            <div class="results-row">
+              <div class="result-box">
+                <span class="result-num">49.1%</span>
+                <span class="result-desc">Placement Success Rate (Peak)</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">38.9%</span>
+                <span class="result-desc">Sustained Success Rate</span>
+              </div>
+            </div>
+            <p class="case-text" style="margin-top:1.25rem">Industry average placement rates on HARO/Featured.com are typically 5–15%. Achieving 38–49% consistently required deep expertise in pitch quality, timing, and topic relevance. Publications secured include Forbes, alongside multiple industry-specific high-DA outlets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 5: AI Search Optimization -->
+    <div class="case-card fade-in" onclick="toggleCase(this)">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-index">05</span>
+          <div class="case-title-area">
+            <div class="case-client">AI Search · Multi-Client</div>
+            <div class="case-title">AEO/GEO — Optimizing for ChatGPT, Gemini & AI Overviews</div>
+          </div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">AEO</span>
+          <span class="case-tag">GEO</span>
+          <span class="case-tag">AI SEO</span>
+        </div>
+        <span class="case-arrow">›</span>
+      </div>
+      <div class="case-body">
+        <div class="case-grid">
+          <div>
+            <div class="case-section-label">Context</div>
+            <p class="case-text">As AI-powered search (ChatGPT, Gemini, Google AI Overviews) began reshaping how users discover businesses, I identified this shift early and built a systematic methodology for optimizing client websites to appear in AI-generated answers — a practice now known as Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO).</p>
+            <div class="case-section-label" style="margin-top:1.5rem">Methodology</div>
+            <ul class="strategy-list">
+              <li>Rewrote website copy to match conversational, natural language query patterns used in AI prompts</li>
+              <li>Structured content using FAQ schemas, clear heading hierarchies, and concise answer formats</li>
+              <li>Implemented structured data (JSON-LD) to improve AI crawler comprehension</li>
+              <li>Optimized for featured snippets and People Also Ask as precursors to AI citation</li>
+              <li>Built entity authority by ensuring consistent NAP data and authoritative mentions across the web</li>
+              <li>Monitored brand mentions in AI responses using manual querying and emerging monitoring tools</li>
+            </ul>
+          </div>
+          <div>
+            <div class="case-section-label">Why This Matters</div>
+            <p class="case-text">The shift from keyword-based to AI-mediated search is the biggest change in organic marketing since Google's Hummingbird update. Brands that appear in ChatGPT and Gemini answers gain visibility in a zero-click environment where traditional SEO rankings are irrelevant.</p>
+            <div class="case-section-label" style="margin-top:1.5rem">Outcome</div>
+            <p class="case-text">Applied across multiple client websites, resulting in measurable boosts in organic traffic. One of only a small number of SEO specialists in India with documented, hands-on AEO/GEO implementation experience at scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 6: FCCMG -->
+    <div class="case-card fade-in" onclick="toggleCase(this)">
+      <div class="case-header">
+        <div class="case-meta">
+          <span class="case-index">06</span>
+          <div class="case-title-area">
+            <div class="case-client">Healthcare · Orange County, USA</div>
+            <div class="case-title">FCCMG — Multi-Location Healthcare SEO at Scale</div>
+          </div>
+        </div>
+        <div class="case-tags">
+          <span class="case-tag">Enterprise SEO</span>
+          <span class="case-tag">Healthcare</span>
+          <span class="case-tag">Local SEO</span>
+        </div>
+        <span class="case-arrow">›</span>
+      </div>
+      <div class="case-body">
+        <div class="case-grid">
+          <div>
+            <div class="case-section-label">Challenge</div>
+            <p class="case-text">FCCMG is an Orange County healthcare group with 6 office locations and 14 individual provider pages — each needing to rank for location-specific and provider-specific search queries in a highly competitive Southern California market. The challenge was scale: optimizing 20 distinct pages with unique content while maintaining brand consistency.</p>
+            <div class="case-section-label" style="margin-top:1.5rem">Strategy</div>
+            <ul class="strategy-list">
+              <li>Built a location page template system with unique, SEO-rich content for all 6 offices</li>
+              <li>Optimized 14 provider pages with specialty-specific keywords, schema markup, and trust signals</li>
+              <li>Google Business Profile management for each location with review strategy</li>
+              <li>Internal linking architecture connecting provider pages to relevant service and location pages</li>
+              <li>Automated KPI reporting on Looker Studio tracking rankings, traffic, and lead volume per location</li>
+            </ul>
+          </div>
+          <div>
+            <div class="case-section-label">Scope & Impact</div>
+            <p class="case-text">Elevated search rankings and lead generation across all 6 locations and 14 provider pages. Built the foundation for a scalable, multi-location SEO system that the client could maintain and expand independently.</p>
+            <div class="case-section-label" style="margin-top:1.25rem">Scale</div>
+            <div class="results-row">
+              <div class="result-box">
+                <span class="result-num">6</span>
+                <span class="result-desc">Office Locations Optimized</span>
+              </div>
+              <div class="result-box">
+                <span class="result-num">14</span>
+                <span class="result-desc">Provider Pages Ranked</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Skills & <em>Expertise</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-cols">
+    <div class="skill-group fade-in">
+      <div class="skill-group-name">SEO & Search</div>
+      <div class="skill-item">On-Page & Off-Page SEO</div>
+      <div class="skill-item">Technical SEO & Auditing</div>
+      <div class="skill-item">AI Search (AEO / GEO)</div>
+      <div class="skill-item">Schema & Structured Data</div>
+      <div class="skill-item">Core Web Vitals</div>
+      <div class="skill-item">JavaScript SEO</div>
+      <div class="skill-item">Multi-Location Local SEO</div>
+    </div>
+    <div class="skill-group fade-in" style="transition-delay:.08s">
+      <div class="skill-group-name">Content & Strategy</div>
+      <div class="skill-item">Content Strategy & Marketing</div>
+      <div class="skill-item">Ghostwriting (Forbes, Reddit)</div>
+      <div class="skill-item">Conversion Rate Optimization</div>
+      <div class="skill-item">Go-to-Market Strategy</div>
+      <div class="skill-item">Digital PR & Outreach</div>
+      <div class="skill-item">Email Marketing</div>
+      <div class="skill-item">Brand Authority Building</div>
+    </div>
+    <div class="skill-group fade-in" style="transition-delay:.16s">
+      <div class="skill-group-name">Analytics & Growth</div>
+      <div class="skill-item">Google Analytics (UA & GA4)</div>
+      <div class="skill-item">Google Search Console</div>
+      <div class="skill-item">Looker Studio Dashboards</div>
+      <div class="skill-item">DashThis Automation</div>
+      <div class="skill-item">Google Ads / PPC</div>
+      <div class="skill-item">A/B Testing Basics</div>
+      <div class="skill-item">AI Tools (ChatGPT, Jasper)</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-header fade-in">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Tools I <em>Use</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="tools-grid fade-in">
+    <span class="tool-pill">Ahrefs</span>
+    <span class="tool-pill">SEMrush</span>
+    <span class="tool-pill">Google Analytics 4</span>
+    <span class="tool-pill">Google Search Console</span>
+    <span class="tool-pill">Google Tag Manager</span>
+    <span class="tool-pill">Screaming Frog</span>
+    <span class="tool-pill">Microsoft Clarity</span>
+    <span class="tool-pill">Looker Studio</span>
+    <span class="tool-pill">DashThis</span>
+    <span class="tool-pill">HubSpot</span>
+    <span class="tool-pill">Sharpspring CRM</span>
+    <span class="tool-pill">WordPress CMS</span>
+    <span class="tool-pill">Canva</span>
+    <span class="tool-pill">Google Trends</span>
+    <span class="tool-pill">ChatGPT</span>
+    <span class="tool-pill">Gemini</span>
+    <span class="tool-pill">Jasper AI</span>
+    <span class="tool-pill">Copy.ai</span>
+    <span class="tool-pill">Catchr</span>
+    <span class="tool-pill">MoneyRobot</span>
+    <span class="tool-pill">SEOptimer</span>
+    <span class="tool-pill">Featured.com</span>
+    <span class="tool-pill">HARO</span>
+    <span class="tool-pill">Google Ads</span>
+  </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+<section id="experience">
+  <div class="section-header fade-in">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Career <em>Journey</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Nov 2025 – Apr 2026</div>
+      <div class="timeline-role">SEO Team Lead</div>
+      <div class="timeline-company">Digital Academy 360 · Bengaluru, Karnataka</div>
+      <div class="timeline-highlights">
+        <span class="tl-highlight">60 keywords ranked</span>
+        <span class="tl-highlight">20% first-page</span>
+        <span class="tl-highlight">Backlink strategy</span>
+        <span class="tl-highlight">Social SEO</span>
+        <span class="tl-highlight">Cross-team collaboration</span>
+      </div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Jan 2025 – Oct 2025</div>
+      <div class="timeline-role">SEO Specialist (Consultant)</div>
+      <div class="timeline-company">First Bit Technology · Patna, Bihar</div>
+      <div class="timeline-highlights">
+        <span class="tl-highlight">49.1% outreach rate</span>
+        <span class="tl-highlight">AI Search Optimization</span>
+        <span class="tl-highlight">Google Ads</span>
+        <span class="tl-highlight">DashThis automation</span>
+      </div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Mar 2024 – Jan 2025</div>
+      <div class="timeline-role">SEO Specialist</div>
+      <div class="timeline-company">First Bit Technology · Patna, Bihar</div>
+      <div class="timeline-highlights">
+        <span class="tl-highlight">+76.7% calls</span>
+        <span class="tl-highlight">12 healthcare sites</span>
+        <span class="tl-highlight">Team of 4</span>
+        <span class="tl-highlight">5 interns trained</span>
+      </div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Mar 2023 – Feb 2024</div>
+      <div class="timeline-role">Senior Digital Marketing Executive</div>
+      <div class="timeline-company">First Bit Technology · Patna, Bihar</div>
+      <div class="timeline-highlights">
+        <span class="tl-highlight">+137% organic growth</span>
+        <span class="tl-highlight">+46% YoY leads</span>
+        <span class="tl-highlight">8 sites launched</span>
+        <span class="tl-highlight">Team lead (4 members)</span>
+      </div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Dec 2021 – Feb 2023</div>
+      <div class="timeline-role">Digital Marketing Executive</div>
+      <div class="timeline-company">GMR WebTeam · Patna, Bihar</div>
+      <div class="timeline-highlights">
+        <span class="tl-highlight">+145.6% traffic</span>
+        <span class="tl-highlight">+49% leads</span>
+        <span class="tl-highlight">42 proposals written</span>
+        <span class="tl-highlight">Post-pandemic recovery</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-in" style="justify-content:center; text-align:center; flex-direction:column; gap:.75rem">
+    <span class="section-num" style="color:rgba(245,241,235,.4)">06</span>
+    <h2 class="section-title" style="color:var(--paper)">Let's <em>Work</em> Together</h2>
+  </div>
+  <p class="contact-sub fade-in">Open to senior SEO, growth marketing, and digital strategy roles. Also available for consulting projects, SEO audits, and AI search optimization engagements.</p>
+  <div class="contact-links fade-in">
+    <a href="mailto:tarannumfatma2027@gmail.com" class="contact-link">✉ Email Me</a>
+    <a href="https://in.linkedin.com/in/tarannum-f-07731b180" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="tel:+917258050776" class="contact-link">📞 Call</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Tarannum Fatma</span>
+  <span>SEO · Growth · Digital Strategy · Bengaluru, IN</span>
+</footer>
+
+<script>
+  function toggleCase(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.case-card.open').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
